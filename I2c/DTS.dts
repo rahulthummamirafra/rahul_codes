@@ -1,8 +1,21 @@
-&i2c1 {
-    status = "okay";
+/dts-v1/;
+/plugin/;
 
-    oled@3c {
-        compatible = "ssd1306_oled";
-        reg = <0x3c>;
+/ {
+    compatible = "brcm,bcm2711";
+
+    fragment@0 {
+        target = <&i2c1>;   // or keep &i2c_arm
+
+        __overlay__ {
+            #address-cells = <1>;
+            #size-cells = <0>;
+
+            ds3231: rtc@68 {
+                compatible = "maxim,ds3231";
+                reg = <0x68>;
+                status = "okay";
+            };
+        };
     };
 };

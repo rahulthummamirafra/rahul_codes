@@ -1,0 +1,8 @@
+&i2c1 {
+    status = "okay";
+
+    oled@3c {
+        compatible = "ssd1306_oled";
+        reg = <0x3c>;
+    };
+};
